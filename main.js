@@ -24,3 +24,12 @@ let main = function() {
     }
     convertNumToString(arr); // <-- The function where we'll do all the work
 }
+
+let convertNumToString = function(array) {
+    let result = []; // <-- push the strings into result
+    for (let i = 0; i < array.length; i++) {
+        let convertedNumber = convert(array[i]); // Convert each entry into its phonetics with a helper function
+        result.push(convertedNumber);
+    }
+    return result.join(',') // Join the array to form a new string with commas between each entry
+}
