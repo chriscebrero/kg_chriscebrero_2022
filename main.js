@@ -27,9 +27,25 @@ let main = function() {
 
 let convertNumToString = function(array) {
     let result = []; // <-- push the strings into result
+    if (array.length === 0 || !array) {
+        console.log("");
+        return;
+    }
+
     for (let i = 0; i < array.length; i++) {
         let convertedNumber = convert(array[i]); // Convert each entry into its phonetics with a helper function
         result.push(convertedNumber);
     }
-    return result.join(',') // Join the array to form a new string with commas between each entry
+    // return result.join(',') // Join the array to form a new string with commas between each entry
+    console.log(result.join(','));
 }
+
+let convert = function(num) {
+    let numString = "";
+    for (let n of num) { // get the mappings of each digit and add it to the string
+        numString += map[n];
+    }
+    return numString;
+}
+
+main();
