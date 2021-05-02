@@ -20,14 +20,15 @@ let main = function() {
     let args = process.argv;
     let arr = [];
     for (let i = 2; i < args.length; i++) {
-        arr.push(args[i]);
+        arr.push(parseInt(args[i])); //
     }
     convertNumToString(arr); // <-- The function where we'll do all the work
 }
 
+// Array of Integers -> Array of Strings
 let convertNumToString = function(array) {
     let result = []; // <-- push the strings into result
-    if (array.length === 0 || !array) {
+    if (array.length === 0 || array === null) {
         console.log("");
         return;
     }
@@ -47,6 +48,7 @@ let convertNumToString = function(array) {
 }
 
 let convert = function(num) {
+    num = num.toString();
     let numString = "";
     for (let n of num) { // get the mappings of each digit and add it to the string
         numString += map[n];
