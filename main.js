@@ -32,12 +32,18 @@ let convertNumToString = function(array) {
         return;
     }
 
+    let cache = new Map(); // Optimize, trade space for time, so it'll be faster if we run the function with duplicate entries i.e. (node main.js 3 3 3)
+
     for (let i = 0; i < array.length; i++) {
-        let convertedNumber = convert(array[i]); // Convert each entry into its phonetics with a helper function
-        result.push(convertedNumber);
+        if (cache.has(array[i])) {
+            result.push(cache.get(array[i]));
+        } else {
+            let convertedNumber = convert(array[i]); // Convert each entry into its phonetics with a helper function
+            cache.set(array[i], convertedNumber);
+            result.push(convertedNumber);
+        }
     }
-    // return result.join(',') // Join the array to form a new string with commas between each entry
-    console.log(result.join(','));
+    console.log(result.join(',')); // Join the array to form a new string with commas between each entry
 }
 
 let convert = function(num) {
