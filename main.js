@@ -13,3 +13,14 @@ const map = {
 }
 // I used the string '1' instead of the integer 1 because on terminal when passing extra parameters,
 // i.e. (node main.js 3) the 3 is processed as a string which makes it easier to write the funcion by abit
+
+
+// Creating the main function that we'll use, to process the variables
+let main = function() {
+    let args = process.argv;
+    let arr = [];
+    for (let i = 2; i < args.length; i++) {
+        arr.push(args[i]);
+    }
+    convertNumToString(arr); // <-- The function where we'll do all the work
+}
